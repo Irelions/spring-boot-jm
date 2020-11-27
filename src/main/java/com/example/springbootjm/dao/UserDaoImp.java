@@ -33,7 +33,6 @@ public class UserDaoImp implements UserDao {
       if(user.getId() == null) {
          entityManager.persist(user);
       } else entityManager.merge(user);
-//      entityManager.persist(user);
    }
 
    //Success +
@@ -76,7 +75,5 @@ public class UserDaoImp implements UserDao {
       }
       String[] a = {"ADMIN", "USER"};
       return temp;
-//      return (String[])temp.toArray();
    }
-
 }

@@ -6,7 +6,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
-          <factory-entry name="entityManagerFactory" value="c77a67fb-c7b0-46a7-9c14-9b249792db39" />
+          <factory-entry name="entityManagerFactory" />
         </datasource-mapping>
         <naming-strategy-map />
       </configuration>
@@ -33,7 +33,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
-    <orderEntry type="jdk" jdkName="11" jdkType="JavaSDK" />
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-data-jpa:2.4.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-aop:2.4.0" level="project" />
@@ -173,11 +173,5 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.codehaus.plexus:plexus-utils:3.2.1" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.codehaus.plexus:plexus-classworlds:2.6.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.sonatype.plexus:plexus-build-api:0.0.7" level="project" />
-    <orderEntry type="library" name="Maven: org.webjars:bootstrap:4.5.3" level="project" />
-    <orderEntry type="library" name="Maven: org.webjars:jquery:3.5.1" level="project" />
-    <orderEntry type="library" name="Maven: org.webjars:popper.js:1.16.0" level="project" />
-    <orderEntry type="library" name="bootstrap" level="application" />
-    <orderEntry type="library" name="popper.js" level="application" />
-    <orderEntry type="library" name="jquery" level="application" />
   </component>
 </module>

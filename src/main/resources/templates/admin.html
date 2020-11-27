@@ -82,63 +82,8 @@
                         </div>
                     </div>
                     <!--Users table TAB end-->
+
                     <!--New User TAB-->
-<!--                    <div id="newUser" class="container-fluid tab-pane fade">-->
-<!--                        <h4 class="m-2">Add new user</h4>-->
-
-<!--                        <div class="container-fluid py-3 bg-white" >-->
-<!--                            <form class="mx-auto text-center" style="width: 380px" method="POST" action="/add" th:object="${newUser}">-->
-<!--                                <label for="newUserId"></label>-->
-<!--                                <input hidden type="text" th:field="*{id}" id="newUserId"/>-->
-<!--                                <div class="form-group">-->
-<!--                                    <label class="font-weight-bold m-0" for="newUserName">First name</label>-->
-<!--                                    <input type="text" class="form-control bg-warning" th:field="*{firstName}" id="newUserName" />-->
-<!--                                </div>-->
-<!--                                <div class="form-group">-->
-<!--                                    <label class="font-weight-bold m-0" for="newUserLastname">Last name</label>-->
-<!--                                    <input type="text" class="form-control  bg-warning" th:field="*{lastName}" id="newUserLastname"/>-->
-<!--                                </div>-->
-<!--                                <div class="form-group">-->
-<!--                                    <label class="font-weight-bold m-0" for="newUserDepartment">Department</label>-->
-<!--                                    <input type="text" class="form-control" th:field="*{department}" id="newUserDepartment"/>-->
-<!--                                </div>-->
-<!--                                <div class="form-group">-->
-<!--                                    <label class="font-weight-bold m-0" for="newUserEmail">Email</label>-->
-<!--                                    <input type="text" class="form-control" th:field="*{email}" id="newUserEmail"/>-->
-<!--                                </div>-->
-<!--                                <div class="form-group">-->
-<!--                                    <label class="font-weight-bold m-0" for="newUserLogin">Login</label>-->
-<!--                                    <input type="text" class="form-control bg-warning" th:field="*{username}" id="newUserLogin"/>-->
-<!--                                </div>-->
-<!--                                <div class="form-group">-->
-<!--                                    <label class="font-weight-bold m-0" for="newUserPassword">Password</label>-->
-<!--                                    <input type="text" class="form-control bg-warning" th:field="*{password}" id="newUserPassword"/>-->
-<!--                                </div>-->
-<!--                                <div class="form-group">-->
-<!--                                    <label class="font-weight-bold m-0" for="newUserRole">Role</label>-->
-<!--&lt;!&ndash;                                     <input id="newUserRole" type="text" class="form-control" value="" th:field="*{roles}" />&ndash;&gt;-->
-
-<!--                                    <select id="newUserRole" class="form-control"  th:field="*{roles}"  multiple>-->
-
-<!--                                        <option th:each="role : ${allRoles}"-->
-
-<!--                                                th:value="'ROLE_' + ${role.role}" th:text="${role.role}">-->
-<!--                                        </option>-->
-<!--                                    </select>-->
-
-<!--&lt;!&ndash;                                    <select class="form-control" id="parts" name="parts" multiple="multiple" >&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <option th:each="part : ${partsAtribute}"&ndash;&gt;-->
-<!--&lt;!&ndash;                                                th:selected="${servisAttribute.parts.contains(part)}"&ndash;&gt;-->
-<!--&lt;!&ndash;                                                th:value="${part.id}"&ndash;&gt;-->
-<!--&lt;!&ndash;                                                th:text="${part.name}">Part name</option>&ndash;&gt;-->
-<!--&lt;!&ndash;                                    </select>&ndash;&gt;-->
-<!--                                </div>-->
-<!--                                <input class="btn btn-success" type="submit" value="Add new user"/>-->
-<!--                            </form>-->
-<!--                        </div>-->
-<!--                    </div>-->
-                    <!--New User TAB end-->
-<!--                    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!            -->
                     <div id="newUser" class="container-fluid tab-pane fade">
                         <h4 class="m-2">Add new user</h4>
 
@@ -148,11 +93,11 @@
                                 <input hidden type="text" name="id" id="newUserId"/>
                                 <div class="form-group">
                                     <label class="font-weight-bold m-0" for="newUserName">First name</label>
-                                    <input type="text" class="form-control bg-warning" name="firstName" id="newUserName" />
+                                    <input type="text" class="form-control bg-warning" name="firstName" id="newUserName" required/>
                                 </div>
                                 <div class="form-group">
                                     <label class="font-weight-bold m-0" for="newUserLastname">Last name</label>
-                                    <input type="text" class="form-control  bg-warning" name="lastName" id="newUserLastname"/>
+                                    <input type="text" class="form-control bg-warning" name="lastName" id="newUserLastname" required/>
                                 </div>
                                 <div class="form-group">
                                     <label class="font-weight-bold m-0" for="newUserDepartment">Department</label>
@@ -164,36 +109,25 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="font-weight-bold m-0" for="newUserLogin">Login</label>
-                                    <input type="text" class="form-control bg-warning" name="username" id="newUserLogin"/>
+                                    <input type="text" class="form-control bg-warning" name="username" id="newUserLogin" required/>
                                 </div>
                                 <div class="form-group">
                                     <label class="font-weight-bold m-0" for="newUserPassword">Password</label>
-                                    <input type="text" class="form-control bg-warning" name="password" id="newUserPassword"/>
+                                    <input type="text" class="form-control bg-warning" name="password" id="newUserPassword" required/>
                                 </div>
                                 <div class="form-group">
                                     <label class="font-weight-bold m-0" for="newUserRole">Role</label>
-                                    <!--                                     <input id="newUserRole" type="text" class="form-control" value="" th:field="*{roles}" />-->
-
-                                    <select id="newUserRole" class="form-control"  name="roles"  multiple>
-
+                                    <select id="newUserRole" class="form-control"  name="roles"  multiple required>
                                         <option th:each="role : ${allRoles}"
-
-                                                th:value="${role}" th:text="${role.role}">
+                                                th:value="${role.role}"
+                                                th:text="${role.role}">
                                         </option>
                                     </select>
-
-                                    <!--                                    <select class="form-control" id="parts" name="parts" multiple="multiple" >-->
-                                    <!--                                        <option th:each="part : ${partsAtribute}"-->
-                                    <!--                                                th:selected="${servisAttribute.parts.contains(part)}"-->
-                                    <!--                                                th:value="${part.id}"-->
-                                    <!--                                                th:text="${part.name}">Part name</option>-->
-                                    <!--                                    </select>-->
                                 </div>
                                 <input class="btn btn-success" type="submit" value="Add new user"/>
                             </form>
                         </div>
                     </div>
-<!--                    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
                 </div>
             </div>
         </div>
@@ -226,7 +160,7 @@
                         </div>
                         <div class="form-group">
                             <label class="font-weight-bold m-0" for="userLastnameEdit">Last name</label>
-                            <input type="text" class="form-control" th:value="${user.lastName}" id="userLastnameEdit" name="lastName"/>
+                            <input type="text" class="form-control" th:value="${user.lastName}" id="userLastnameEdit" name="lastName" required/>
                         </div>
                         <div class="form-group">
                             <label class="font-weight-bold m-0" for="userDepartmentEdit">Department</label>
@@ -238,20 +172,20 @@
                         </div>
                         <div class="form-group">
                             <label class="font-weight-bold m-0" for="userLoginEdit">Login</label>
-                            <input type="text" class="form-control" th:value="${user.username}" id="userLoginEdit" name="username"/>
+                            <input type="text" class="form-control" th:value="${user.username}" id="userLoginEdit" name="username" required/>
                         </div>
                         <div class="form-group">
                             <label class="font-weight-bold m-0" for="userPasswordEdit">Password</label>
-                            <input type="text" class="form-control" th:value="${user.password}" id="userPasswordEdit" name="password"/>
+                            <input type="text" class="form-control" th:value="${user.password}" id="userPasswordEdit" name="password" required/>
                         </div>
                         <div class="form-group">
-                            <label class="font-weight-bold m-0" for="userRoleEdit">Role</label>
-                            <input type="text" class="form-control" th:value="${user.roles.toArray()}" id="userRoleEdit" name="roles"/>
-<!--                            <select id="userRoleEdit" class="form-control" name="roles" th:value="roles" multiple>-->
-<!--                                <tr th:each="role : *{allRoles}" >-->
-<!--                                    <option  th:text="${role.getRole()}"></option>-->
-<!--                                </tr>-->
-<!--                            </select>-->
+                            <label class="font-weight-bold m-0" for="editUserRole">Role</label>
+                            <select id="editUserRole" class="form-control"  name="roles"  multiple required>
+                                <option th:each="role : ${allRoles}"
+                                        th:value="${role.role}"
+                                        th:text="${role.role}">
+                                </option>
+                            </select>
                         </div>
                     </form>
                 </div>

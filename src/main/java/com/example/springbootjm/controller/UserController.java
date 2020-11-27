@@ -52,31 +52,18 @@ public class UserController {
 	}
 
 	//Success +
-//	@RequestMapping(value = "admin/new", method = RequestMethod.GET)
-//	public String showFormNewUser(Model model) {
-//		model.addAttribute("user", new User());
-//		return "new";
-//	}
-
-	//Success +
 	@PostMapping(value = "/add")
-	public String create(@ModelAttribute("user") User user) {
+	public String create(@ModelAttribute("user") User user, @RequestParam ("roles") String[] roles) {
+		for(String role : roles) {
+			if(role.toLowerCase().contains("admin")){
+				user.setRoles(Set.of(new Role(1L, role)));
+			}
+			if(role.toLowerCase().contains("user")){
+				user.setRoles(Set.of(new Role(2L, role)));
+			}
+		}
 		userService.add(user);
 		return "redirect:/admin/";
-	}
-
-	Role role;
-
-	@PostMapping(value = "/addNew")
-	public String addNew (@RequestParam("firstName") String firstName,
-						  @RequestParam("lastName") String lastName,
-						  @RequestParam("department") String department,
-						  @RequestParam("email") String email,
-						  @RequestParam("username") String username,
-						  @RequestParam("password") String password,
-						  @RequestParam("roles") String[] roles) {
-		userService.add(saveUserAsUser(firstName, lastName, department, email, username, password, String.join(" ", roles)));
-	return "redirect:/admin/";
 	}
 
 	//Success +
@@ -98,28 +85,5 @@ public class UserController {
 		User user = userService.showUser(id);
 		model.addAttribute("userUpdate", user);
 		return "redirect:/admin/";
-//		return "new";
-	}
-
-	private User saveUserAsUser(String firstName,
-								String lastName,
-								String department,
-								String email,
-								String username,
-								String password,
-								String roles) {
-//		Set<Role> rolesSet = Arrays.stream(roles.split(" "))
-//				.map(Role::new)
-//				.collect(Collectors.toSet());
-		Set<Role> rolesSet = new HashSet<>();
-		User user = new User();
-		user.setFirstName(firstName);
-		user.setLastName(lastName);
-		user.setDepartment(department);
-		user.setEmail(email);
-		user.setUsername(username);
-		user.setPassword(password);
-		user.setRoles(rolesSet);
-		return user;
 	}
 }
