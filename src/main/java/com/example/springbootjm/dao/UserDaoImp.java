@@ -1,13 +1,15 @@
 package com.example.springbootjm.dao;
 
+import com.example.springbootjm.model.Role;
 import com.example.springbootjm.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import java.util.List;
+import java.util.*;
 
 
 @Repository
@@ -16,6 +18,7 @@ public class UserDaoImp implements UserDao {
 
    @PersistenceContext
    private EntityManager entityManager;
+
 
    //Success +
    @Override
@@ -30,6 +33,7 @@ public class UserDaoImp implements UserDao {
       if(user.getId() == null) {
          entityManager.persist(user);
       } else entityManager.merge(user);
+//      entityManager.persist(user);
    }
 
    //Success +
@@ -57,5 +61,22 @@ public class UserDaoImp implements UserDao {
       return findUserByUsername(username).get(0);
    }
 
+   @Override
+   public List<Role> allRoles() {
+      List<Role> roles = entityManager.createQuery("FROM Role", Role.class).getResultList();
+      return roles;
+   }
+
+   @Override
+   public Set<Role> allRolesString() {
+      List<Role> roles = entityManager.createQuery("FROM Role", Role.class).getResultList();
+      Set<Role> temp = new HashSet<>();
+      for(Role role : roles){
+         temp.add(role);
+      }
+      String[] a = {"ADMIN", "USER"};
+      return temp;
+//      return (String[])temp.toArray();
+   }
 
 }
